@@ -1,22 +1,24 @@
 #:kivy 2.3.1
 
 <ConnectionScreen>:
+    orientation: 'vertical'
+    
+    Label:
+        text: "Bluetooth Device Scanner"
+        size_hint_y: None
+        height: '40dp'
+        font_size: '20sp'
+    
+    Button:
+        text: "Scan for Devices"
+        size_hint_y: None
+        height: '30dp'
+        padding: [10, 5]
+        on_press: root.scan_for_devices()  # Call the scan function
+        background_color: app.theme.PrimaryColor  # Use PrimaryColor from Theme
+
     BoxLayout:
+        id: device_list_layout
         orientation: 'vertical'
-        
-        Label:
-            text: 'Available Bluetooth Devices'
-            size_hint_y: None
-            height: '40dp'
-        
-        RecycleView:
-            id: device_list
-            viewclass: 'DeviceButton'
-            size_hint_y: 0.8  # Adjust the height proportion of the RecycleView
-        
-        Button:
-            text: "Scan for Devices"
-            size_hint_y: None
-            height: '30dp'  # Set a specific height for the button
-            padding: [10, 5]  # Add padding to the button
-            on_press: root.scan_for_devices()
+        size_hint_y: None
+        height: self.minimum_height  # Adjust height based on content
